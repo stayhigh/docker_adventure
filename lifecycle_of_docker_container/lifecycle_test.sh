@@ -3,9 +3,10 @@
 set -x
 
 container_name=lifecycletest
-image=alpine
+image="ubuntu:18.04"
 docker pull alpine && echo 'IMAGE alpine already pulled ..'
-if [[ $(docker ps -a | grep ${container_name}) ]]
+docker pull ubuntu:18.04 && echo 'IMAGE ubuntu:18.04 already pulled ..'
+if docker ps -a | grep -q ${container_name}
 then
     echo 'kill & remove used name'
     docker stop ${container_name}
@@ -13,7 +14,8 @@ then
 fi
 
 # NOTE: -t option is a must, it will not show "UP" without -t option
-container_id=$(docker create --name ${container_name} -t -i ubuntu:18.04 bash | head -c 12)
+container_id=$(docker create --name ${container_name} -t -i ${image} bash | head -c 12)
+echo "container id: ${container_id}"
 # create and run new container: docker run -d -it --name ${container_name} ${image}
 
 docker start "${container_name}"
