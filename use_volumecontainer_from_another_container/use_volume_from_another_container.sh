@@ -12,5 +12,5 @@ fi
 # create a volume container
 docker create -v ./data --name data ubuntu:18.04
 
-# use volume from another container (alpine container use ubuntu:18.04 container's volume)
+# use volume from another container (alpine container use ubuntu:18.04 container's volume, and remove the alpine container after the execution of the command)
 docker run --rm --volumes-from data alpine ls -la ./data
