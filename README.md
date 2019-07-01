@@ -10,5 +10,7 @@ sudo bash -x ./check_and_change_storage_driver_to_overlay2.sh
 sudo bash -x use_volume_from_another_container.sh
 5.  Enable load-balancing with services
 sudo bash -x use_volume_from_another_container.sh
-5. Install docker-compose
+6. Install docker-compose
 sudo bash -x install_dockercompose/install_dockercompose.sh
+7. FIX SSHNotAvailableWhenCreatingDockerMachine
+sudo bash -x SSHNotAvailableWhenCreatingDockerMachine/SSHNotAvailableWhenCreatingDockerMachine.sh
